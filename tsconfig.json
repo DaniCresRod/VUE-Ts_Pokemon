@@ -1,0 +1,14 @@
+{
+  "files": ["src/components/interfaces/myPokemonInfo.ts", "src/components/services/services.ts"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ]
+}
