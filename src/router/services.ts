@@ -1,4 +1,4 @@
-import type { myPokemonInfo } from "../interfaces/myPokemonInfo";
+import type { myPokemonInfo } from "./myPokemonInfo";
 
 export default async function getPokemon(searchArg:string):Promise<any>{
 
@@ -8,16 +8,17 @@ export default async function getPokemon(searchArg:string):Promise<any>{
         const response:any=await fetch(searchString+searchArg);
         const data:any=await response.json();
 
+        //console.log(data);
         const pokemonTypes:string[]=[];
 
-        for(let i=0; i<data.types.length();i++){
+        for(let i=0; i<data.types.length;i++){
             pokemonTypes.push(data.types[i].type.name)
         }
 
         const pokemonAbilities:string[]=[];
 
-        for(let i=0; i<data.abilities.length();i++){
-            pokemonAbilities.push(data.abilities.ability.name)
+        for(let i=0; i<data.abilities.length;i++){
+            pokemonAbilities.push(data.abilities[i].ability.name)
         }
 
         const eachPokemon:myPokemonInfo= await {

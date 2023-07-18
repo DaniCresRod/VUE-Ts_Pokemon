@@ -1,5 +1,5 @@
 {
-  "files": ["src/components/interfaces/myPokemonInfo.ts", "src/components/services/services.ts"],
+  "files": ["src/router/myPokemonInfo.ts", "src/router/services.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"
