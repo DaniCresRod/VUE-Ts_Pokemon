@@ -4,9 +4,9 @@ import TheWelcome from '../components/TheWelcome.vue'
 
 <template>
   <main>
-    <div>
+    <!-- <div>
       <TheWelcome />
-    </div>
+    </div> -->
     <div id="poke-container">
       hols
     </div>

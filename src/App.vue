@@ -2,13 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import type { myPokemonInfo } from './router/myPokemonInfo'
 import  getPokemon  from './router/services'
-import { onMounted } from 'vue';
-
-
-let poke_container:any;
-onMounted(() => {
-  poke_container = document.getElementById('poke-container')!;
-})
+import { onMounted, onBeforeMount, onUpdated } from 'vue';
 
 const pokemon_count:number = 100;
 
@@ -29,38 +23,26 @@ const colors:any = {
 	normal: '#F5F5F5'
 }
 
+let poke_container:any;
 let poke_array:myPokemonInfo[]=[];
-let poke_array1:myPokemonInfo[]=[];
+var poke_array1:myPokemonInfo[]=[];
 
 async function CreateArray():Promise<myPokemonInfo[]>{
 
 for(let i=1; i<=pokemon_count; i++){
-  try{
-    
+  try{    
     poke_array[i-1] = await getPokemon(i.toString());
-
-    //console.log(poke_array[i-1]);
-
-    //createCard(poke_array[i-1]); 
-
   }
   catch(error){
     console.log(error);
   }		
 }
 
-
 //console.log(poke_array.sort( (a,b) => a.id - b.id ));
 return poke_array.sort( (a,b) => a.id - b.id );
 }
 
-poke_array1 = await CreateArray();
-
-poke_array1.forEach(y=>{createCard(y)});
-
-
 function createCard(data:myPokemonInfo){
-  console.log(poke_container);
 	let each_pokemon=poke_container.appendChild(document.createElement("div"));
 		each_pokemon.classList.add("pokemon");
 		
@@ -86,8 +68,12 @@ function createCard(data:myPokemonInfo){
 			each_pokemon__div_info_small.innerHTML=`Type: <span>${pok_type}</span>`;
 }
 
-
-
+onMounted(async() => {   
+  poke_array1 = await CreateArray();
+  poke_container=document.getElementById('poke-container');
+  console.log(poke_array1); 
+  poke_array1.forEach(y => createCard(y));
+})
 
 </script>
 

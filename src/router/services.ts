@@ -30,7 +30,7 @@ export default async function getPokemon(searchArg:string):Promise<any>{
             type: pokemonTypes,
             abilities: pokemonAbilities,
         }
-
+//console.log(eachPokemon);
         return eachPokemon;
     }
     catch(error:any){
