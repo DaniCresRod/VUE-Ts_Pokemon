@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import explorador from '../components/TheWelcome.vue'
 </script>
 
 <template>
   <main>
-    <!-- <div>
-      <TheWelcome />
-    </div> -->
+    
     <div id="poke-container">
-      hols
+      
     </div>
+
+    <explorador/>
+
     
   </main>
 </template>
@@ -17,10 +18,11 @@ import TheWelcome from '../components/TheWelcome.vue'
 <style lang="scss" scoped>
 main{
   display:flex;
-
+  flex-direction: row;
 
   div{
   width: 50vw;
+  flex-wrap: wrap;
   }
 
 }

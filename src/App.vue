@@ -2,7 +2,8 @@
 import { RouterLink, RouterView } from 'vue-router'
 import type { myPokemonInfo } from './router/myPokemonInfo'
 import  getPokemon  from './router/services'
-import { onMounted, onBeforeMount, onUpdated } from 'vue';
+import { onMounted } from 'vue';
+import { useCounterStore } from './stores/counter'
 
 const pokemon_count:number = 100;
 
@@ -63,9 +64,21 @@ function createCard(data:myPokemonInfo){
 		let each_pokemon__div_info_h3=each_pokemon__div_info.appendChild(document.createElement("h3"));
 			each_pokemon__div_info_h3.classList.add("name");
 			each_pokemon__div_info_h3.textContent=data.name;
-		let each_pokemon__div_info_small=each_pokemon.appendChild(document.createElement("small"));
+		let each_pokemon__div_info_small=each_pokemon__div_info.appendChild(document.createElement("small"));
 			each_pokemon__div_info_small.classList.add("type");
-			each_pokemon__div_info_small.innerHTML=`Type: <span>${pok_type}</span>`;
+			each_pokemon__div_info_small.innerHTML=`Tipo: <span>${pok_type}</span>`;
+
+      each_pokemon.addEventListener("click",(event:Event) => explorePokemon(event), false);
+}
+
+//Esta funcion almacena el id del pokemon en pinia para buscarlo despues.
+function explorePokemon(event:Event){
+
+  let selectedPokemon=event.currentTarget;   
+  let numberOfSelectedPokemon: number = selectedPokemon ? selectedPokemon.getElementsByClassName("number")[0].innerText : null;
+
+  const myStore=useCounterStore();
+  myStore.chosenPokemon=numberOfSelectedPokemon;
 }
 
 onMounted(async() => {   
@@ -87,12 +100,46 @@ onMounted(async() => {
   <RouterView />
 </template>
 
-<style scoped>
+<style>
 header {
   line-height: 1.5;
   max-height: 100vh;
 
   background: yellow;
+}
+
+#poke-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 60vw;
+  justify-content: center;
+  row-gap: 1vw;
+  column-gap: 1vh;
+}
+
+.pokemon{
+  width: 15vw;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.img-container img{
+  width: 10vw; 
+}
+
+.img-container img:hover{
+  transform: scale(1.7);
+}
+
+.name{
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.number{
+  display: none;
 }
 
 .logo {
@@ -128,7 +175,7 @@ nav a:first-of-type {
   
 }
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
@@ -150,6 +197,10 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
+
+  img{
+  width: 10vw;
+
 }
+} */
 </style>
-./router/myPokemonInfo@/router/services
