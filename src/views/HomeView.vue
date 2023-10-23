@@ -110,8 +110,7 @@ main{
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 4vh;
-
+  margin-top: 6vh;
 
   div{
   width: 40vw;

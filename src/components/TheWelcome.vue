@@ -64,7 +64,9 @@ onUpdated(() => {
       <p>Habilidades: <span v-for="eachAbility in myChosenPokemon.abilities" :key="eachAbility.ability.name">{{ (eachAbility.ability.name+"&emsp;") }}</span></p>
     </article>
   </section>
-  <section id="detailPokemon" v-else></section>
+  <section id="detailPokemon" v-else>
+    <img id="fotoPrimos" src="../assets/Images/primos.png"/>
+  </section>
   
 </template>
 
@@ -76,6 +78,9 @@ onUpdated(() => {
   right: 4vw;
   width: 35vw;
   height: fit-content;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   text-align: center;
   border: 1px solid black;
   border-radius: 5px;
@@ -84,6 +89,11 @@ onUpdated(() => {
   align-items: center;
   padding: 1vh 2vw;
   
+  #fotoPrimos{
+    width:100%;
+    border:5px solid black;
+    border-radius: 15px;
+  }
 
   img{
     width: 90%;
@@ -93,16 +103,19 @@ onUpdated(() => {
     display:flex;
     flex-direction: row;
     column-gap: 2vw;
+    flex-wrap: wrap;
   }
 
   p{
     border:1px solid black;
     width: fit-content;
+    max-width: 40vw;
     border-radius: 5px;
     padding: 0.5vh 1vw;
     margin: 1vh auto;
     background-color: antiquewhite;
     text-wrap: balance;
+    color: black;
 
     span{
       font-weight: bold;

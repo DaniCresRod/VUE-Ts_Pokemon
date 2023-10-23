@@ -16,7 +16,6 @@ import { RouterLink, RouterView } from 'vue-router'
 header {
   line-height: 1.5;
   max-height: 100vh;
-
   background: antiquewhite;
 }
 
@@ -32,9 +31,13 @@ header {
 
 .pokemon{
   width: 15vw;
+  min-width: 175px;
   border: 1px solid black;
   border-radius: 5px;
   text-align: center;
+  color: black;
+  overflow-wrap: break-word;
+  text-wrap:wrap;
 }
 
 .img-container img{
@@ -72,7 +75,7 @@ header{
   position:fixed;
   top:0;
   width: 90vw;
-  font-size: 1rem;
+  height: 5vh;
   text-align: right; 
   border-radius: 5px;
   border:1px solid black;
