@@ -64,7 +64,7 @@ onUpdated(() => {
       <p>Habilidades: <span v-for="eachAbility in myChosenPokemon.abilities" :key="eachAbility.ability.name">{{ (eachAbility.ability.name+"&emsp;") }}</span></p>
     </article>
   </section>
-  <section id="detailPokemon" v-else>hla</section>
+  <section id="detailPokemon" v-else></section>
   
 </template>
 
@@ -102,6 +102,7 @@ onUpdated(() => {
     padding: 0.5vh 1vw;
     margin: 1vh auto;
     background-color: antiquewhite;
+    text-wrap: balance;
 
     span{
       font-weight: bold;

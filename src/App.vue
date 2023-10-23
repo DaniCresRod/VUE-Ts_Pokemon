@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header>
       <nav>
-        <RouterLink to="/">PokeDesk</RouterLink>
+        <RouterLink to="/VUE-Ts_Pokemon">PokeDesk</RouterLink>
       </nav>
   </header>
 
