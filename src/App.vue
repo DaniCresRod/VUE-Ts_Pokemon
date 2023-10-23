@@ -57,6 +57,10 @@ header {
   display: none;
 }
 
+.type{
+  display: none;
+}
+
 .logo {
   display: block;
   margin: 0 auto 2rem;
