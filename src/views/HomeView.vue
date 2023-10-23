@@ -72,8 +72,13 @@ function createCard(data:myPokemonInfo){
 //Esta funcion almacena el id del pokemon en pinia para buscarlo despues.
 function explorePokemon(event:Event){
 
-  let selectedPokemon=event.currentTarget;   
-  let numberOfSelectedPokemon: number = selectedPokemon ? selectedPokemon.getElementsByClassName("number")[0].innerText : null;
+  let selectedPokemon=event.currentTarget as HTMLElement;   
+//   let numberOfSelectedPokemon: number | null = selectedPokemon ? (selectedPokemon.getElementsByClassName("number")[0]!.innerText as unknown as number) : null;
+	let numberOfSelectedPokemon: number | null = null;
+	let numberElement = selectedPokemon instanceof HTMLElement ? selectedPokemon.getElementsByClassName("number")[0] as HTMLElement : null;
+	if (numberElement) {
+	numberOfSelectedPokemon = parseInt(numberElement.innerText);
+	}
 
   const myStore=useCounterStore();
   myStore.chosenPokemon=numberOfSelectedPokemon;

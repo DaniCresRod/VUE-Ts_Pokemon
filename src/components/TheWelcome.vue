@@ -37,7 +37,9 @@ watch(myStore, async()=>{
 })
 
 onUpdated(() => {
-  document.getElementById("detailPokemon").setAttribute("style", "background-Color:"+colors[myChosenPokemon.value.types[0].type.name]);
+  // document.getElementById("detailPokemon").setAttribute("style", "background-Color:"+colors[myChosenPokemon.value.types[0].type.name]);
+  const detailPokemonElement = document.getElementById("detailPokemon")!;
+  detailPokemonElement.setAttribute("style", "background-Color:" + colors[myChosenPokemon.value.types[0].type.name]);
 
 })
 
@@ -58,8 +60,8 @@ onUpdated(() => {
         <p>Peso: <span>{{ (myChosenPokemon.weight)/10 }}</span> Kilogramos</p>
       </div>
 
-      <p>Tipo: <span v-for="eachType in myChosenPokemon.types">{{ (eachType.type.name+"&emsp;") }}</span></p>
-      <p>Habilidades: <span v-for="eachAbility in myChosenPokemon.abilities">{{ (eachAbility.ability.name+"&emsp;") }}</span></p>
+      <p>Tipo: <span v-for="eachType in myChosenPokemon.types" :key="eachType.type.name">{{ (eachType.type.name+"&emsp;") }}</span></p>
+      <p>Habilidades: <span v-for="eachAbility in myChosenPokemon.abilities" :key="eachAbility.ability.name">{{ (eachAbility.ability.name+"&emsp;") }}</span></p>
     </article>
   </section>
   <section id="detailPokemon" v-else>hla</section>
